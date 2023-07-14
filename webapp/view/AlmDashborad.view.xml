@@ -1,0 +1,107 @@
+<!-- <mvc:View controllerName="db.almdashboardapp.controller.AlmDashborad"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+
+        </content>
+    </Page>
+</mvc:View> -->
+
+
+
+<mvc:View
+controllerName="db.almdashboardapp.controller.AlmDashborad"
+xmlns:mvc="sap.ui.core.mvc"
+displayBlock="true"
+xmlns="sap.m"
+xmlns:viz="sap.viz.ui5.controls"
+xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+xmlns:viz.data="sap.viz.ui5.data"
+>
+<Shell id="shell">
+    <App id="app">
+        <pages>
+            <Page id="page" title="Demo" showHeader="false">
+                <content>
+                    <ObjectHeader
+                        responsive="true"
+                        icon="sap-icon://globe"
+                        title="SAP ALM DashBoard"
+                        number="{ALMData>/deaths}"
+                        numberUnit="Deaths around the world"
+                        numberState="Error"
+                        class="sapUiResponsivePadding--header">
+                        <headerContainer>
+                            <IconTabBar
+                                id="iconTabId"
+                                selectedKey="1"
+                                upperCase="true"
+                                class="sapUiResponsiveContentPadding"
+                            >
+                                <items>
+                                
+                                 <IconTabFilter key="3" icon="sap-icon://business-objects-experience" text="Graph">
+                                        <viz:VizFrame id="yourChartId" uiConfig="{applicationSet:'fiori'}" width="100%" vizType="line">
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{ALMData>/}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition name="serviceName" value="{ALMData>serviceName}" />
+                                                            <viz.data:DimensionDefinition name="time" value="{ALMData>time}" />
+                                                            
+                                                            
+                                                                <!-- <viz.data:DimensionDefinition name="metricName" value="{ALMData>metricName}" /> -->
+                                                                    <!-- <viz.data:DimensionDefinition name="value" value="{ALMData>value}" /> -->
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition name="value" value="{ALMData>value}" />
+                                                       
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem id="valueA4xisFeed" uid="valueAxis" type="Measure" values="value" />
+                                                <viz.feeds:FeedItem id="cate4goryAxisFeed" uid="categoryAxis" type="Dimension" values="time" />
+                                              
+                                              
+                                                 <viz.feeds:FeedItem id="col4orFeed" uid="color" type="Dimension" values="serviceName" />
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                         <Button id="settingsButton" icon="sap-icon://action-settings" press="onSettingsButtonPress" />
+                                    </IconTabFilter>
+                                  
+
+                                    <IconTabFilter key="3" icon="sap-icon://business-objects-experience" text="Graph">
+                                        <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" width="100%" vizType="line">
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{ALMData>/}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition name="metric" value="{ALMData>metric}" />
+                                                            <viz.data:DimensionDefinition name="time" value="{ALMData>time}" />
+                                                                <!-- <viz.data:DimensionDefinition name="metricName" value="{ALMData>metricName}" /> -->
+                                                                    <!-- <viz.data:DimensionDefinition name="value" value="{ALMData>value}" /> -->
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition name="value" value="{ALMData>value}" />
+                                                       
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem id="valueAxisFeed" uid="valueAxis" type="Measure" values="value" />
+                                                <viz.feeds:FeedItem id="categoryAxisFeed" uid="categoryAxis" type="Dimension" values="time" />
+                                                 <viz.feeds:FeedItem id="colorFeed" uid="color" type="Dimension" values="metric" />
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                    </IconTabFilter>
+                                     
+                                </items>
+                            </IconTabBar>
+                        </headerContainer>
+                    </ObjectHeader>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</Shell>
+</mvc:View>
